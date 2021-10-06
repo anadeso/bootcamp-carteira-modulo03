@@ -25,18 +25,6 @@ public class TransacaoController {
 
     @GetMapping
     public List<TransacaoDto> listar() {
-        // Exemplo sem a utilizacao do modelmapper
-//        List<TransacaoDto> transacoesDto = new ArrayList<>();
-//
-//        for (Transacao transacao : trasacoes) {
-//            TransacaoDto dto = new TransacaoDto();
-//            dto.setTicker(transacao.getTicker());
-//            dto.setPreco(transacao.getPreco());
-//            dto.setQuantidade(transacao.getQuantidade());
-//            dto.setTipoTransacao(transacao.getTipoTransacao());
-//
-//            transacoesDto.add(dto);
-//        }
         return trasacoes.stream()
                     .map(t -> modelMapper.map(t, TransacaoDto.class))
                     .collect(Collectors.toList());
