@@ -19,7 +19,6 @@ public class TransacaoService {
     private TransacaoRepository transacaoRepository;
     private ModelMapper modelMapper = new ModelMapper();
 
-    @Transactional
     public List<TransacaoDto> listar() {
         List<Transacao> transacoes = transacaoRepository.findAll();
         return transacoes.stream()
@@ -27,8 +26,10 @@ public class TransacaoService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     public void cadastrar(TransacaoFormDto transacaoFormDto) {
         Transacao transacao = modelMapper.map(transacaoFormDto, Transacao.class);
+        transacao.setId(null);
         transacaoRepository.save(transacao);
     }
 }
