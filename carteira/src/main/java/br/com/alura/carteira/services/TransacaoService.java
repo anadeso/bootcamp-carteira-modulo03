@@ -1,20 +1,27 @@
-package br.com.alura.carteira.service;
+package br.com.alura.carteira.services;
 
 import br.com.alura.carteira.dto.TransacaoDto;
 import br.com.alura.carteira.dto.TransacaoFormDto;
-import br.com.alura.carteira.modelo.Transacao;
+import br.com.alura.carteira.entities.Transacao;
+import br.com.alura.carteira.repositories.TransacaoRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class TransacaoService {
 
-    private List<Transacao> transacoes = new ArrayList<>();
+    @Autowired
+    private TransacaoRepository transacaoRepository;
     private ModelMapper modelMapper = new ModelMapper();
 
+    @Transactional
     public List<TransacaoDto> listar() {
+        List<Transacao> transacoes = transacaoRepository.findAll();
         return transacoes.stream()
                 .map(x -> modelMapper.map(x, TransacaoDto.class))
                 .collect(Collectors.toList());
@@ -22,6 +29,6 @@ public class TransacaoService {
 
     public void cadastrar(TransacaoFormDto transacaoFormDto) {
         Transacao transacao = modelMapper.map(transacaoFormDto, Transacao.class);
-        transacoes.add(transacao);
+        transacaoRepository.save(transacao);
     }
 }

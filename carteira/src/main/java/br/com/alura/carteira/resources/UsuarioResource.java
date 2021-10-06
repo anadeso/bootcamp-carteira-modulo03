@@ -1,8 +1,8 @@
-package br.com.alura.carteira.controller;
+package br.com.alura.carteira.resources;
 
 import br.com.alura.carteira.dto.UsuarioDto;
 import br.com.alura.carteira.dto.UsuarioFormDto;
-import br.com.alura.carteira.service.UsuarioService;
+import br.com.alura.carteira.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/usuarios")
-public class UsuarioController {
+public class UsuarioResource {
 
     @Autowired
     private UsuarioService service;

@@ -1,4 +1,4 @@
-package br.com.alura.carteira.modelo;
+package br.com.alura.carteira.entities;
 
 import lombok.Getter;
 import lombok.Setter;

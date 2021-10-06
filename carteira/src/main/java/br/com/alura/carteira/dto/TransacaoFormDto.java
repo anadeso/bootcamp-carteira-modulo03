@@ -1,6 +1,7 @@
 package br.com.alura.carteira.dto;
 
-import br.com.alura.carteira.modelo.TipoTransacao;
+import br.com.alura.carteira.entities.TipoTransacao;
+import com.fasterxml.jackson.annotation.JsonAlias;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,4 +26,7 @@ public class TransacaoFormDto {
     @PastOrPresent
     private LocalDate dataTransacao;
     private TipoTransacao tipoTransacao;
+
+    @JsonAlias("usuario_id")
+    private Long usuarioId;
 }
