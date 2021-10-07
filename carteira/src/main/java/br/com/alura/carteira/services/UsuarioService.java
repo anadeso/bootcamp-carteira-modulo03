@@ -6,11 +6,11 @@ import br.com.alura.carteira.entities.Usuario;
 import br.com.alura.carteira.repositories.UsuarioRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 @Service
 public class UsuarioService {
@@ -19,12 +19,9 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
     private ModelMapper modelMapper = new ModelMapper();
 
-    public List<UsuarioDto> listar() {
-        List<Usuario> usuarios = usuarioRepository.findAll();
-
-        return usuarios.stream()
-                .map(x -> modelMapper.map(x, UsuarioDto.class))
-                .collect(Collectors.toList());
+    public Page<UsuarioDto> listar(Pageable paginacao) {
+        Page<Usuario> usuarios = usuarioRepository.findAll(paginacao);
+        return usuarios.map(x -> modelMapper.map(x, UsuarioDto.class));
     }
 
     public void cadastrar(UsuarioFormDto usuarioFormDto) {
