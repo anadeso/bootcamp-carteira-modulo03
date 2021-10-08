@@ -3,7 +3,7 @@ create table transacoes(
     ticker varchar(6) not null,
     preco decimal(18,2) not null,
     quantidade int not null,
-    dataTransacao date not null,
-    tipoTransacao varchar(100) not null,
+    data date not null,
+    tipo varchar(100) not null,
     primary key(id)
 );

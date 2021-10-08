@@ -9,7 +9,6 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 public class TransacaoDto {
-
     private String ticker;
     private BigDecimal preco;
     private int quantidade;
