@@ -6,7 +6,13 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Column;
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.PastOrPresent;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 

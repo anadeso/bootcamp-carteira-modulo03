@@ -1,6 +1,5 @@
 package br.com.alura.carteira.resources;
 
-import br.com.alura.carteira.dto.TransacaoDto;
 import br.com.alura.carteira.dto.UsuarioDto;
 import br.com.alura.carteira.dto.UsuarioFormDto;
 import br.com.alura.carteira.services.UsuarioService;
